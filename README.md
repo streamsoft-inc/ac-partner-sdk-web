@@ -63,7 +63,10 @@ if (!AcPartnerClient.isAuthenticated()) {
 
 // 3) Once signed in — call the API directly:
 const me = await AcPartnerClient.getUser();
-const albums = await AcPartnerClient.getAlbums({ limit: 50, includeArtwork: true });
+const albums = await AcPartnerClient.getAlbums({
+  limit: 50,
+  includeArtwork: true,
+});
 const results = await AcPartnerClient.search({ query: "horizon" });
 
 AcPartnerClient.logout();
@@ -77,7 +80,11 @@ your own instance: `new AcPartnerClient({ clientId, redirectUri })`.
 `init` auto-completes the redirect by default. To control it yourself:
 
 ```ts
-await AcPartnerClient.init({ clientId, redirectUri, autoHandleRedirect: false });
+await AcPartnerClient.init({
+  clientId,
+  redirectUri,
+  autoHandleRedirect: false,
+});
 if (AcPartnerClient.isRedirectPending()) {
   await AcPartnerClient.handleRedirectCallback(); // exchanges code, cleans the URL
 }
@@ -123,11 +130,11 @@ await AcPartnerClient.reportPlaybackEvents([
   {
     albumUuid,
     trackId,
-    startedAt: startMs,          // Unix ms, UTC
-    endedAt: endMs,              // >= startedAt
-    listeningTime: 212,          // seconds heard, pauses excluded
-    position: 214,               // optional: playhead at the end
-    sessionId,                   // optional: stable per play, de-dupes retries
+    startedAt: startMs, // Unix ms, UTC
+    endedAt: endMs, // >= startedAt
+    listeningTime: 212, // seconds heard, pauses excluded
+    position: 214, // optional: playhead at the end
+    sessionId, // optional: stable per play, de-dupes retries
   },
 ]);
 ```
