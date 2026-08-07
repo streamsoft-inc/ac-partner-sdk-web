@@ -1,0 +1,46 @@
+{
+  "name": "@ac/partner-sdk-web",
+  "version": "0.1.0",
+  "description": "Browser TypeScript SDK for AC partners: public-client (Authorization Code + PKCE) auth and Partner API access. No backend, no client secret.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist",
+    "prepare": "tsup",
+    "prepublishOnly": "npm run clean && npm run typecheck && npm run build"
+  },
+  "keywords": [
+    "ac",
+    "partner",
+    "sdk",
+    "typescript",
+    "auth"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.1",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3"
+  }
+}
